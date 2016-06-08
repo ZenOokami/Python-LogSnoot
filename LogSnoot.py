@@ -9,20 +9,32 @@ import time
 import os
 import math
 
+
 # Classes ==============================
 class Snoop: # A log
     def __init__(self): # Initialization
+        self.version = "1.2.0"
         LogDirectory()
         self.log_name = createLogName()
         self.LOG = open('SnoopedLogs/'+ self.log_name, "w") # Create log
-        self.LOG.write(current_date() + ": Created Log")
+        self.LOG.write("Welcome LogSnoot, a Snoot to be booped when it finds some snoops. \nYou are currently using version: " + self.version + "\n")
+        self.LOG.write("============================\n")
+        self.LOG.write(current_date() + ": Created Log, The Snoot has been Booped!\n")
 
     def close(self):
         self.LOG.close()
 
-    def write(self, user_input):
-        self.LOG.write(current_date() + ": " + user_input)
+    def write(self, user_input): # Standard Log
+        self.LOG.write(current_date() + ": " + user_input + "\n")
 
+    def writeW(self, user_input): # Distinctly states if the log is a warning
+        self.LOG.write("[Warning]::" + current_date() + ": " + user_input + "\n")
+
+    def writeE(self, user_input): # Distinctly states if the log is an error
+        self.LOG.write("[Error]::" + current_date() + ": " + user_input + "\n")
+
+    def writeI(self, user_input):
+        self.LOG.write("[Info]::" + current_date() + ": " + user_input + "\n")
 
 
 # Functions =======================================
@@ -39,7 +51,7 @@ def LogDirectory():  # This creates or acknowledges the logs folder
         print("The snoot is beginning to toot")
 
 
-def createLogName():
+def createLogName(): # Creates the proper name for our generated logs
     date = current_date()
     name = ""
     # We ned to remove the ':' and replace them, and spaces, with '-'
