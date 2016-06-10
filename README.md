@@ -5,11 +5,11 @@ A python module framework that is targeted at allowing any python project to be 
 
 Rather simple:
 
-1.) Import the package
-2.) Create an instance of the class from the package, I recommend: <LOG = LogSnoot.Snoop> but "LOG" can be replaced with
+1. Import the package
+2. Create an instance of the class from the package, I recommend: <LOG = LogSnoot.Snoop> but "LOG" can be replaced with
 anything.
-3.) Use the class functions to make your logs: <LOG.writeI(your_input_here)>
-4.) Close the log when you close the program: <LOG.close()>
+3. Use the class functions to make your logs: <LOG.writeI(your_input_here)>
+4. Close the log when you close the program: <LOG.close()>
 
 You can also check the "Example.py" file to run it and get a feeling for how it works.
 
