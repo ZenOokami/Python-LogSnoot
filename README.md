@@ -29,6 +29,24 @@ Q) What are your plans for this module?
 A) Aside from recreating the project in other languages, such as Java, I don't know. I think I may try make the project
 a bit easier to use and possibly expand on features?
 
+
+Q) How do I use this?
+
+A) As stated above, Import the project and create an instance, check the Example.py file for an example.
+
+
+**Settings Layout**
+
+We may want to eventually add the ability to set "profiles".
+
+Other than that, we want our settings file to list a set of variables that will be used for later on, because of this
+we can use simple boolean variables for most, int settings for more complex settings option.
+
++ LogSnoot_Enabled = True
++ How_Long_to_Keep_Log = 0
++ etc.
+
+
 **Change Log**
 
 Version 1.2.0
@@ -40,3 +58,4 @@ Version 1.2.0
 Version 1.0.0
 
 + The Snoot has been booped!
+
