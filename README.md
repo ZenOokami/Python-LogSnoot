@@ -1,7 +1,9 @@
 # Python-LogSnoot
 A python module framework that is targeted at allowing any python project to be able to create log files in order to keep note on exactly what is going on.
 
-[ ![Codeship Status for ZenOokami/Python-LogSnoot](https://app.codeship.com/projects/bd828c50-bbe0-0134-cf62-4683eea0ea95/status?branch=master)](https://app.codeship.com/projects/195766)
+Master Branch: [ ![Codeship Status for ZenOokami/Python-LogSnoot](https://app.codeship.com/projects/bd828c50-bbe0-0134-cf62-4683eea0ea95/status?branch=master)](https://app.codeship.com/projects/195766)
+
+Dev Branch: [ ![Codeship Status for ZenOokami/Python-LogSnoot](https://app.codeship.com/projects/bd828c50-bbe0-0134-cf62-4683eea0ea95/status?branch=Dev)](https://app.codeship.com/projects/195766)
 
 **How to use?**
 
