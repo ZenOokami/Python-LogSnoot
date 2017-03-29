@@ -17,7 +17,7 @@ anything.
 
 You can also check the "Example.py" file to run it and get a feeling for how it works.
 
-**The MemoryNode.conf**
+# The MemoryNode.conf
 
 This is the configuration file for Snooter. What you set here is what Snooter will remember.
 
@@ -25,17 +25,22 @@ At the current time, the MemoryNode is rather limited, but here's how you make u
 
 The file is depenend on Lines - as in the Line's order are very important as well as their values:
 
-+ Line0: System State | This line determines if Snooter will generate logs for you.
+### Line1:
+System State | This line determines if Snooter will generate logs for you.
 
 When set to "on", Snooter will generate logs. When set to "off" Snooter will not. If set to anything else, You'll
 confuse Snooter and he'll assume the default, which is on.
 
-+ Line1: Max Log Storage | This line determines how many Logs you'd like Snooter to hold on to. If set to 0, he will
-store unlimited amount. When to set to any number above 0, he'll create a cap, and will do you the favor of deleting the
+### Line2: 
+Max Log Storage | This line determines how many Logs you'd like Snooter to hold on to. If set to 0, he will
+store unlimited amount. 
+
+When to set to any number above 0, he'll create a cap, and will do you the favor of deleting the
 oldest files until you're at your cap.
 
+___
 
-**F.A.Q.s**
+# F.A.Q.s
 
 Q) Why the name "LogSnoot"?
 
