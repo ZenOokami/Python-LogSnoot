@@ -73,7 +73,11 @@ we can use simple boolean variables for most, int settings for more complex sett
 + etc.
 
 
-**Change Log**
+# Change Log
+
+Version 2.0.1
+
++ Fixed bugs resulting in off-set number of files being deleted when max_files_keep is > 0
 
 Version 2.0.0
 

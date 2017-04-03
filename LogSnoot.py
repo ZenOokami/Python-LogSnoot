@@ -104,7 +104,7 @@ def LogSettings(): # This creates the settings file and checks
         # We need to check to see if max_logs is !0
         if(max_logs > 0):
             # If number of files > max logs then delete the oldest files until equal
-            if(number_of_files > max_logs - 1):
+            if(number_of_files > (max_logs - 1)): # -1 is to offset the new file that's created on start
                 # start deleting files
                 print("Hek, too many files, gotta chump some logs!")
 
@@ -115,7 +115,8 @@ def LogSettings(): # This creates the settings file and checks
 
                 logs = getLogs('SnoopedLogs')
 
-                while index < last_target: # from the start to index to the targeted
+                # We use +1 to take in account the file that will be generated at the end of the program run
+                while index < (last_target + 1): # from the start to index to the targeted
                     print("removing: " + logs[index])
                     os.remove("SnoopedLogs/" + logs[index])
                     index += 1
