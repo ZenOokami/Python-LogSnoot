@@ -11,15 +11,17 @@
 
 #Mascot: Snooter? The Python
 
-# Imports ============================
+# Imports ==============================
 import time
 import os
 import math
 
+
 # Classes ==============================
 class Snoop: # A log
     def __init__(self): # Initialization
-        self.state = getSystemState() # The state of the system, 0=off 1=on -- todo: move these features over to the memory node
+        LogSettings()  # check for settings
+        self.state = getSystemState() # The state of the system, 0=off 1=on -- todo: move these features over to the memory node [Done]
         print("System State is set to: " + str(self.state))
         # self.lines = []
 
@@ -37,7 +39,7 @@ class Snoop: # A log
 
             # Adding for v2.0
             # Do we have a settings file?
-            LogSettings()  # check for settings
+
         else:
             print("Snooter isn't snooping because you told Snooter not to Snoop.\n")
 
@@ -76,9 +78,6 @@ class Snoop: # A log
     #     self.lines = file.readlines()
 
 
-
-
-
 # Functions =======================================
 def current_date():
     current_time = time.asctime(time.localtime(time.time()))
@@ -105,7 +104,7 @@ def LogSettings(): # This creates the settings file and checks
         # We need to check to see if max_logs is !0
         if(max_logs > 0):
             # If number of files > max logs then delete the oldest files until equal
-            if(number_of_files > max_logs):
+            if(number_of_files > (max_logs - 1)): # -1 is to offset the new file that's created on start
                 # start deleting files
                 print("Hek, too many files, gotta chump some logs!")
 
@@ -116,7 +115,8 @@ def LogSettings(): # This creates the settings file and checks
 
                 logs = getLogs('SnoopedLogs')
 
-                while index < last_target: # from the start to index to the targeted
+                # We use +1 to take in account the file that will be generated at the end of the program run
+                while index < (last_target + 1): # from the start to index to the targeted
                     print("removing: " + logs[index])
                     os.remove("SnoopedLogs/" + logs[index])
                     index += 1
