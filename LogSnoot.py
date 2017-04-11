@@ -4,10 +4,6 @@
 # You can find an example file that shows the use of LogSnoot
 # You can also find our videos on the project over at your channel, http://YouTube.com/EssenceOfZen
 
-#Things to do when file is loaded:
-#   *Check to see if a "SnoopedLogs" is created, if not create one
-#   * We're going to want to have the system keep track of the logged files - if said files are dated beyond the timespan of the user's setting
-#     we can do this by running a check on the file names in the Log folder and comparing them to the date.
 
 #Mascot: Snooter? The Python
 
@@ -64,6 +60,10 @@ class Snoop: # A log
     def writeI(self, user_input):
         if (self.state != 0):
             self.LOG.write("[Info]::" + current_date() + ": " + user_input + "\n")
+
+    def space(self):
+        if (self.state != 0):
+            self.LOG.write("")
 
     def setOn(self):
         self.state = 1
