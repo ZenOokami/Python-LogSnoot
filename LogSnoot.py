@@ -31,16 +31,14 @@ class Snoop: # A log
             self.LOG.write("Welcome LogSnoot, a Snoot to be booped when it finds some snoops. \nYou are currently using version: " + self.version + "\n")
             self.LOG.write("============================\n")
             self.LOG.write(current_date() + ": Created Log, The Snoot has been Booped!\n")
-            #self.LOG.write("System state: " + str(self.state) + " || Obviously if this file was generated.\n")
-
-            # Adding for v2.0
-            # Do we have a settings file?
+            # self.LOG.write("System state: " + str(self.state) + " || Obviously if this file was generated.\n")
 
         else:
             print("Snooter isn't snooping because you told Snooter not to Snoop.\n")
 
 
     def close(self):
+        # Closes the log
         self.LOG.close()
 
     # These are our write functions with levels -- you can have normal logged statements
@@ -78,8 +76,9 @@ class Snoop: # A log
     #     self.lines = file.readlines()
 
 
+
 # Functions =======================================
-def current_date():
+def current_date(): # todo: create a system to change the format of the the file name
     current_time = time.asctime(time.localtime(time.time()))
     return current_time
 
@@ -90,6 +89,7 @@ def LogDirectory():  # This creates or acknowledges the logs folder
     else:
         os.makedirs("SnoopedLogs")
         print("The snoot is beginning to toot for the first time.\n")
+
 
 def LogSettings(): # This creates the settings file and checks
     if os.path.isfile("MemoryNode.conf"):
@@ -172,7 +172,7 @@ def getMemoryNodeSettings():
 
 def getSystemState():
     lines = getMemoryNodeSettings() # We want line 1 so index 0
-    # we could do lines[0][lines[0].rfind("=")+2:len(lines[0])-1] but I want to make it more readable
+    # we could do lines[0][lines[0].rfind("=")+2:len(lines[0])-1] but I want to make it more readable -- the -1 is to exclude the newline char
     target = lines[0]
     state = target[target.rfind("=")+2:len(target)-1] # this should either be "on" or "off"
 
@@ -200,4 +200,3 @@ def getLogs(directory):
     for file in os.listdir(directory):
         logs.append(file)
     return logs
-
