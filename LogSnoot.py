@@ -1,13 +1,9 @@
-#Programmed by Zane "ZenOokami" Blalock
+# Programmed by Zane "ZenOokami" Blalock
 #      Http://EssenceOfZen.org/
 # This particular program is for creating a library that allows for communication to crate log files
 # You can find an example file that shows the use of LogSnoot
 # You can also find our videos on the project over at your channel, http://YouTube.com/EssenceOfZen
 
-#Things to do when file is loaded:
-#   *Check to see if a "SnoopedLogs" is created, if not create one
-#   * We're going to want to have the system keep track of the logged files - if said files are dated beyond the timespan of the user's setting
-#     we can do this by running a check on the file names in the Log folder and comparing them to the date.
 
 #Mascot: Snooter? The Python
 
@@ -35,6 +31,7 @@ class Snoop: # A log
             self.LOG.write("Welcome LogSnoot, a Snoot to be booped when it finds some snoops. \nYou are currently using version: " + self.version + "\n")
             self.LOG.write("============================\n")
             self.LOG.write(current_date() + ": Created Log, The Snoot has been Booped!\n")
+            #self.LOG.space()
             #self.LOG.write("System state: " + str(self.state) + " || Obviously if this file was generated.\n")
 
             # Adding for v2.0
@@ -42,6 +39,7 @@ class Snoop: # A log
 
         else:
             print("Snooter isn't snooping because you told Snooter not to Snoop.\n")
+            
 
 
     def close(self):
@@ -65,6 +63,11 @@ class Snoop: # A log
         if (self.state != 0):
             self.LOG.write("[Info]::" + current_date() + ": " + user_input + "\n")
 
+    def spaceline(self):
+        if (self.state != 0):
+            #print('making a new line')
+            self.LOG.write("\n")
+
     def setOn(self):
         self.state = 1
 
@@ -82,6 +85,12 @@ class Snoop: # A log
 def current_date():
     current_time = time.asctime(time.localtime(time.time()))
     return current_time
+	
+def current_date_ymdt():
+	time_info = time.localtime()
+	current_time = str(time_info.tm_year) + '-' + str(time_info.tm_mon) + '-' + str(time_info.tm_mday) + '-' + str(time_info.tm_hour) + '-' + str(time_info.tm_min) + '-' + str(time_info.tm_sec)
+	return current_time
+	
 
 
 def LogDirectory():  # This creates or acknowledges the logs folder
@@ -145,7 +154,7 @@ def LogSettings(): # This creates the settings file and checks
 
 
 def createLogName(): # Creates the proper name for our generated logs
-    date = current_date()
+    date = current_date_ymdt()
     name = ""
     # We ned to remove the ':' and replace them, and spaces, with '-'
     for item in date:
