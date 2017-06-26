@@ -1,4 +1,4 @@
-#Programmed by Zane "ZenOokami" Blalock
+# Programmed by Zane "ZenOokami" Blalock
 #      Http://EssenceOfZen.org/
 # This particular program is for creating a library that allows for communication to crate log files
 # You can find an example file that shows the use of LogSnoot
@@ -31,14 +31,18 @@ class Snoop: # A log
             self.LOG.write("Welcome LogSnoot, a Snoot to be booped when it finds some snoops. \nYou are currently using version: " + self.version + "\n")
             self.LOG.write("============================\n")
             self.LOG.write(current_date() + ": Created Log, The Snoot has been Booped!\n")
-            # self.LOG.write("System state: " + str(self.state) + " || Obviously if this file was generated.\n")
+            #self.LOG.space()
+            #self.LOG.write("System state: " + str(self.state) + " || Obviously if this file was generated.\n")
+
+            # Adding for v2.0
+            # Do we have a settings file?
 
         else:
             print("Snooter isn't snooping because you told Snooter not to Snoop.\n")
+            
 
 
     def close(self):
-        # Closes the log
         self.LOG.close()
 
     # These are our write functions with levels -- you can have normal logged statements
@@ -59,9 +63,10 @@ class Snoop: # A log
         if (self.state != 0):
             self.LOG.write("[Info]::" + current_date() + ": " + user_input + "\n")
 
-    def space(self):
+    def spaceline(self):
         if (self.state != 0):
-            self.LOG.write("")
+            #print('making a new line')
+            self.LOG.write("\n")
 
     def setOn(self):
         self.state = 1
@@ -76,11 +81,16 @@ class Snoop: # A log
     #     self.lines = file.readlines()
 
 
-
 # Functions =======================================
-def current_date(): # todo: create a system to change the format of the the file name
+def current_date():
     current_time = time.asctime(time.localtime(time.time()))
     return current_time
+	
+def current_date_ymdt():
+	time_info = time.localtime()
+	current_time = str(time_info.tm_year) + '-' + str(time_info.tm_mon) + '-' + str(time_info.tm_mday) + '-' + str(time_info.tm_hour) + '-' + str(time_info.tm_min) + '-' + str(time_info.tm_sec)
+	return current_time
+	
 
 
 def LogDirectory():  # This creates or acknowledges the logs folder
@@ -89,7 +99,6 @@ def LogDirectory():  # This creates or acknowledges the logs folder
     else:
         os.makedirs("SnoopedLogs")
         print("The snoot is beginning to toot for the first time.\n")
-
 
 def LogSettings(): # This creates the settings file and checks
     if os.path.isfile("MemoryNode.conf"):
@@ -145,7 +154,7 @@ def LogSettings(): # This creates the settings file and checks
 
 
 def createLogName(): # Creates the proper name for our generated logs
-    date = current_date()
+    date = current_date_ymdt()
     name = ""
     # We ned to remove the ':' and replace them, and spaces, with '-'
     for item in date:
@@ -172,7 +181,7 @@ def getMemoryNodeSettings():
 
 def getSystemState():
     lines = getMemoryNodeSettings() # We want line 1 so index 0
-    # we could do lines[0][lines[0].rfind("=")+2:len(lines[0])-1] but I want to make it more readable -- the -1 is to exclude the newline char
+    # we could do lines[0][lines[0].rfind("=")+2:len(lines[0])-1] but I want to make it more readable
     target = lines[0]
     state = target[target.rfind("=")+2:len(target)-1] # this should either be "on" or "off"
 
@@ -200,3 +209,4 @@ def getLogs(directory):
     for file in os.listdir(directory):
         logs.append(file)
     return logs
+
