@@ -7,6 +7,14 @@
 
 #Mascot: Snooter? The Python
 
+# Ideas:
+#   Multiple Ways to generate files (Data dumps vs constant open files)?
+#   Multiple personalities to select:
+#       Snooter the Python
+#       George the sophisticated Ape
+#       Leo the Simple Lion
+#   Ability to email/tweet/upload log to a service
+
 # Imports ==============================
 import time
 import os
@@ -21,7 +29,7 @@ class Snoop: # A log
         print("System State is set to: " + str(self.state))
         # self.lines = []
 
-        self.version = "2.0.0"
+        self.version = "2.1.2"
         LogDirectory() # Check for the directory
         self.log_name = createLogName()
 
@@ -64,6 +72,11 @@ class Snoop: # A log
             self.LOG.write("[Info]::" + current_date() + ": " + user_input + "\n")
 
     def spaceline(self):
+        if (self.state != 0):
+            #print('making a new line')
+            self.LOG.write("\n")
+
+    def space(self):
         if (self.state != 0):
             #print('making a new line')
             self.LOG.write("\n")
@@ -154,6 +167,7 @@ def LogSettings(): # This creates the settings file and checks
 
 
 def createLogName(): # Creates the proper name for our generated logs
+    # todo: Set up a memory node that allows decisions to determine which naming format gets selected.
     date = current_date_ymdt()
     name = ""
     # We ned to remove the ':' and replace them, and spaces, with '-'
