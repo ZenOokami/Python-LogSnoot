@@ -74,6 +74,12 @@ we can use simple boolean variables for most, int settings for more complex sett
 
 
 # Change Log
+Version 2.1.2
+
++ Fixed log naming layout to default into a format that sorts better in most systems.
++ Added new functions for adding spaces between each LOG line.
++
+
 
 Version 2.0.1
 
