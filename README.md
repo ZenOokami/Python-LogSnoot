@@ -40,7 +40,7 @@ oldest files until you're at your cap.
 
 ___
 
-# F.A.Q.s
+# F.A.Q.s BOOP THE SNOOP
 
 Q) Why the name "LogSnoot"?
 
