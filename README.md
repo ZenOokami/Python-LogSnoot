@@ -39,6 +39,8 @@ When to set to any number above 0, he'll create a cap, and will do you the favor
 oldest files until you're at your cap.
 
 ### Line3:
+Debugging State | If enabled then any of your debugging lines will show up in the
+Log, otherwise they won't be written.
 
 
 ___
